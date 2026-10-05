@@ -185,7 +185,7 @@ Yellow-legged frogs still exist in habitats that have remained naturally fishles
 
 ### 2.1. 
 
-Insert a code chunk that will read in your csv file `yellow-legged-frogs.csv`, save it as the object `frog`, and then print a list of the vector names to the screen. (*Note: You can __NOT__ use `View`*.)
+Insert a code chunk that will read in your csv file `yellow-legged-frog.csv`, save it as the object `frog`, and then print a list of the vector names to the screen. (*Note: You can __NOT__ use `View`*.)
 
 < Insert code chunk here >  
 
