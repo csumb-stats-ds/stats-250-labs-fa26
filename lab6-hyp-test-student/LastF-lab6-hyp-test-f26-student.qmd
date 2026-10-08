@@ -1,0 +1,291 @@
+---
+title: 'Lab 6: Introduction to Hypothesis Testing (with Two Independent Groups)'
+author: "NAME"
+format: html
+embed-resources: true
+html-math-method: mathml
+execute: 
+  warning: false
+  echo: true
+  error: false
+---
+
+
+## Before you start:
+
+1. Complete the Lab Primer linked in Canvas.  
+2. Be sure you have opened the `lab6-hyp-test-student.Rproj` file.  
+3. Change the name of the **QMD** file only to your last name, first initial, e.g., `OtterM-lab6-hyp-test-student.qmd`. You will have to close the QMD document to rename the file. 
+4. Change the "NAME" above after `author:` to your name, leaving it in quotes: "Monte Otter"
+
+
+
+## Skills
+
+* Given a dataset, be able to determine if the appropriate assumptions are met to conduct a parametric hypothesis test using probability plots (qq plots) to assess the assumption of normality and exploratory data analysis to assess the guideline of equal variance  
+* Explain that in order to determine if there is a relationship or underlying circumstance that explains the observed characteristics of our sample data, we must compare that observation of a perceived difference or relationship to what might occur simply by random chance.
+* Identify and define the null and alternative hypothesis.  
+* Evaluate p-values, test statistics and other information to assess the results of a hypothesis test.  
+* Interpret a p-value in context
+* Draw specific and general conclusions based on the results of the hypothesis test; interpret the information in context.
+* Conduct statistical inference (confidence interval or hypothesis test) based on two independent samples   
+* Utilize R-code to conduct two-sample statistical inferences (confidence intervals, hypothesis tests)   
+
+
+These skills correspond to LTs 16, 17, and 18 and R LT R4 and R5.    
+In addition, this lab also reviews LTs 4, 5, 8, 10, 13, and 15 and R LT R1, R2, and R10.   
+*Questions will be labeled with their corresponding LT. Note that any one question may not fully cover the LT as it will be assessed on exams. Be sure to refer to the examples in your note outlines. Other questions may not correspond to a LT, but are foundational for learning them.* 
+
+
+***
+
+Here are some symbols that you might find useful:  
+$H_0$ $H_1$ $\sigma$ $\mu$ $\mu_{word}$ $\neq$
+
+
+Before you start the lab, add the code that will load any other packages you might need into this code chunk. 
+
+```{r}
+#| label: setup
+#package for data management
+#package for graphics
+#package for stats
+
+```
+
+
+## Part 1: Chicken Weights
+
+Chicken farming is a multi-billion dollar industry, and any method that increases the growth rate of young chicks can reduce consumer costs while increasing company profits, possibly by millions of dollars. A study was conducted to measure and compare the effectiveness of feed supplements on the growth rate of chickens. A chicken farm in central California selected every n-th chick, where n is a random number between 1 and 10. Those chicks were randomly allocated into two groups, one of which was fed a horsebean supplement and the other a linseed supplement. After six weeks, their weights in grams were recorded. The researchers are interested in determining which feed type is more effective at increasing weight and therefore growth rate of chickens. The data are stored in `chick-weights.csv`.
+
+
+### 1.1.  
+
+(LT 17) State the parameter(s) of interest.
+
+> [parameter symbol] = [parameter of interest in words]   
+
+
+### 1.2. 
+
+(LT 13) State the study type of this study (observational or experiment). Justify your response.
+
+> Insert answer here.   
+> Insert justification here.  
+
+ 
+### 1.3.   
+
+(LT 17) State your null and alternative hypotheses, both symbolically and verbally. You may need one of these symbols for the alternative: $<, >, \neq$.
+
+> $H_0$: [insert symbolic hypothesis here]   
+> Insert verbal hypothesis here.  
+
+> $H_1$: [insert symbolic hypothesis here]   
+> Insert verbal hypothesis here.  
+
+
+### 1.4. 
+
+(LT 16 & 10; LT R1 & R2) Check the conditions to use the Student's t distribution to conduct the hypothesis test. The conditions are listed for you; answer if they were met and justify why in the context of the question. Include any code needed to assess the conditions.
+
+```{r}
+#| label: read-chicks
+chick <- read_csv("chick-weights.csv", show_col_types = FALSE)
+```
+
+```{r}
+#| label: check-conditions-chicks
+
+[insert code to check condition 1a]
+
+[insert code to check condition 1b]
+
+```
+
+
+>  1. Normality/Sufficient sample size:  [Met?]  
+      1a. Is each sample from a Normally distributed population or does the sample data have a roughly bell-shaped or symmetric distribution? [Yes / No]; [Justification]       
+      1b. Is each sample size sufficient? [Yes / No]; [Justification]    
+      
+
+
+
+### 1.5. 
+
+(LT R10) Calculate the appropriate test statistic and p-value 'by hand' (i.e., using the numerical summary functions in R, without using the `t.test()` function); show your work. Provide the test statistic and p-value below.
+
+```{r}
+#| label: calc-t-test-chicks
+
+se <- [insert code to calculate standard error here]
+
+t <- [insert code to calculate test statistic here]
+
+df <- __n.smaller__ - 1
+
+## To calculate p-value, based on alternative symbol - Choose the correct ONE code below based on the context; delete the others so that you only leave the one correct code to run.
+
+# <
+pt(t,df)
+
+# >
+1-pt(t, df)
+
+# =/= and t < 0
+2*pt(t, df)
+
+# =/= and t > 0
+2*(1-pt(t, df))
+```
+
+> Record the test statistic and p-value that is returned  
+> t = ____, df = ____, p-value = ____
+
+
+### 1.6. 
+
+(LT 18a) Interpret your p-value in the context of the scenario. Replace full [hints], including brackets.  
+
+> There is a [insert p-value] probability of getting our test statistic of [symbol = insert test statistic] with degrees of freedom of [insert degrees of freedom] or [insert direction], assuming [insert null hypothesis].   
+
+
+### 1.7.  
+
+(LT 18b) Provide a strength of evidence statement from your p-value, in the context of the scenario, using a significance level of 0.05.    
+
+> Insert answer here   
+
+
+### 1.8. 
+
+(LT R10) Calculate the 95% confidence interval (CI) for the parameter of interest. Calculate, using numerical summary functions in R, as well as one line of code to determine the critical value (denoted by t*). Remember that you've already calculated your standard error in part 1.5.
+
+```{r}
+#| label: calc-ci-chicks
+pe <- [insert code to calculate point estimate here]
+
+cv <- [insert code to calculate t* here]
+
+# Calculate lower bound and upper bound using previously stored values (remember you alreaqdy calculated some values previously)
+(lb_wts <- _____ - _____*____)
+(ub_wts <- _____ + _____*____)
+```
+
+
+### 1.9. 
+
+(LT 4) Provide a second piece of evidence from EDA (Exploratory Data Analysis) that supports the results of the hypothesis test in determining which feed type is more effective at increasing weight of chicks. Be sure to cite your evidence and make a conclusion about the parameter.     
+
+< Insert code chunk here > 
+
+> Insert answer here   
+
+
+### 1.10. 
+
+(LT 5) Identify the population, if any, to which the study can be generalized. Explain why with evidence.     
+
+> Insert answer here.  
+
+
+
+***
+
+## Part 2: Yellow-Legged Frogs   
+
+Multiple factors have contributed to the decline of the endangered Sierra Nevada yellow-legged frog (*Rana sierrae*), including the introduction of fish into naturally fishless waters throughout most of the park. Non-native trout feed on eggs, tadpoles, and young adults and compete for natural food sources; subsequently, no frogs live in lakes with fish. 
+
+Yellow-legged frogs still exist in habitats that have remained naturally fishless. Scientists in Yosemite have been removing non-native fish from some remote lakes and streams and monitoring the frog population to see if it can recover in these restored fishless habitats. They are interested in determining if the density of yellow-legged frogs in restored habitats five years after the restoration is still less than the density in natural habitats. From a map of all frog habitats in Yosemite, they randomly select locations along the shallows and near-edges in restored and in natural habitats. In each location, they calculated the density (#/m^2^) of adult frogs captured and recorded the habitat status. For the order of the difference, use `restored - natural`.    
+
+
+
+### 2.1.  
+
+(LT 17) State the parameter(s) of interest in the study.
+
+> Insert answer here  
+
+
+### 2.2.  
+
+(LT 17) State your null and alternative hypotheses, both symbolically and verbally.
+
+> Insert answer here  
+
+
+### 2.3.  
+
+Read in the data from your csv file `yellow-legged-frog.csv` and use `mutate()` to re-order the levels of the categorical explanatory variable to set the order of the difference `restored - natural`.  
+
+< Insert code chunk here >  
+
+
+### 2.4.  
+
+(LT R2) Create a boxplot of your sample from each group in one single graphic (i.e., numerical variable by categorical variable). Be sure to label the axes appropriately and fully. 
+
+< Insert code chunk here > 
+
+
+### 2.5.  
+
+(LT 16 & 10; LT R1 & R2) State and assess the conditions to use the Student's t distribution to conduct the hypothesis test in the context of the problem. Use the skills you learned in Lab 5 as needed to complete this question. Include any code needed to assess this problem. Be sure to provide full justifications.  
+
+<Insert code chunk here>
+
+>  1. [Condition]:  [Met?]  
+     1a. [evidence and justification in context of question]   
+     1b. [evidence and justification in context of question]    
+     
+
+
+
+### 2.6.  
+
+(LT R5) Perform an appropriate hypothesis test using the `t.test()` function, then provide your test statistic, degrees of freedom (Welch's approximation), and p-value.
+
+<Insert code chunk here>
+
+> Insert answer here  
+
+
+### 2.7.  
+
+(LT 18a) Interpret your p-value in the context of the scenario.
+
+> Insert answer here  
+
+
+### 2.8.  
+
+(LT 18b) Provide a strength of evidence statement from your p-value, in the context of the scenario, using a significance level of 0.01.   
+
+> Insert answer here  
+
+
+### 2.9.  
+
+(LT R4) Using the `t.test()` function, calculate the 99% confidence interval for the difference in population means of yellow-legged frog density in restored habitats and in natural habitats.  
+
+<Insert code chunk here>
+
+
+### 2.10.  
+
+(LT 8) Based on your confidence interval, is there evidence that yellow-legged frog density in restored habitats is still less than in natural habitats? What can you conclude about the yellow-legged frog density (number / square meter) of restored habitats compared to natural habitats? Explain and justify your answer in the context of the parameter of interest and the research question.   
+
+> Insert answer here  
+
+
+### 2.11.  
+
+(LT 15) Could the researchers determine if the status of habitats *caused* any differences in the yellow-legged frog densities? Justify your answer fully.    
+
+> Insert answer here  
+
+
+
+
+
+
