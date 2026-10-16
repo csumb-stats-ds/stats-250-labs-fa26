@@ -1,0 +1,286 @@
+---
+title: "Lab 7: Paired T-test"
+author: "NAME"
+format: html
+embed-resources: true
+html-math-method: mathml
+execute: 
+  warning: false
+  echo: true
+  error: false
+---
+
+## Before you start:
+
+1. Complete the Lab Primer linked in Canvas.  
+2. Be sure you have opened the `lab7-paired-t-student.Rproj` file.  
+3. Change the name of the **QMD** file only to your last name, first initial, e.g., `OtterM-lab7-paired-t-student.qmd`. You will have to close the QMD document to rename the file. 
+4. Change the "NAME" above after `author:` to your name, leaving it in quotes: "Monte Otter" 
+
+
+## Skills
+
+* Given a dataset, be able to determine if the appropriate assumptions are met to conduct a parametric hypothesis test 
+* Identify a matched pairs design and what inference is appropriate in this situation 
+* Conduct a statistical inference (confidence interval or hypothesis test) based on matched pairs data 
+* Identify and justify the scope of generalizability 
+* Write the parameter of interest and the hypotheses for a two-sample study 
+* Interpret a p-value and evaluate the strength of evidence in a hypothesis test in the context of the study 
+* Interpret a confidence interval in the context of the study 
+* Evaluate a confidence interval to make a claim about the population parameter in the context of the study 
+* Use the study design to determine if causality is appropriate 
+* Identify and describe Type I/Type II errors in the context of the study 
+* Identify and justify the study type 
+* Evaluate exploratory data analysis in support of a conclusion about a parameter(s) within the context of the study 
+* Justify when the results of an inference are trustworthy based on the conditions of the inferential analysis 
+
+
+The above skills cover new LTs 20, 21, 22, as well as a review of LTs 4, 5, 7, 8, 10-13, 15, 16, 18, and R LTs R4-R5, R10 in a new study design.  
+*Questions will be labeled with their corresponding LT. Note that any one question may not fully cover the LT as it will be assessed on exams. Be sure to refer to the examples in your note outlines. Other questions may not correspond to a LT, but are foundational for learning them.* 
+
+
+
+Here are some symbols that you might find useful:  
+$H_0$ $H_1$ $\sigma$ $\mu$ $\mu_0$ $\mu_{word}$ $\mu_{d~word}$ $\neq$
+
+*Tip: putting two spaces after a line forces the next line in your Quarto document to also be a new line in your knitted document.*
+
+*Tip: hover your mouse over a formula to see how it would look in the final document.*
+
+Before you start the lab, add the code that will load any other packages you might need into this code chunk.
+
+```{r}
+#| label: setup
+#| include: false
+
+```
+
+
+## Part 1: Bear Weights
+
+Katmai National Park is famous for the salmon run each summer and the brown bear feast that accompanies it. Brown bears can lose roughly 30% of their body weight while hibernating (spending the winter sleeping), so it is essential that they pack on the pounds during the summer. They feed on high-caloric foods, like sockeye salmon (one salmon can be ~4000 calories), but also on sedges (a grass, often eating about 30 lbs of sedges a day), berries, grubs, etc. Over the course of the summer, bears have to add hundreds of pounds to their body weight to make up for weight lost during the past hibernation, and to survive the next hibernation; at peak season, brown bears can add up to four pounds of weight per day! Over the summer, the brown bears can really pack it on! (case in point: see pictures of the [Katmai Fat Bear champion final contenders](https://explore.org/fat-bear-week)).
+
+You are a researcher interested in the weight gain of brown bears over the summer. You want to know if the Katmai bears, with an unusually large salmon run to feast on this year, gained more than 30% of their autumn-body weight over the summer, or roughly 345 lbs. You weigh a random selection of brown bears in Katmai NP at the beginning of June, and then weigh the same bears at the end of September and record their weight (in pounds). The data are in `fat-bear-weights.csv`, in the vectors `sept_lb` and `june_lb`. 
+
+
+
+### 1.1.
+
+(LT 20) State the parameter of interest.  
+
+> Insert answer here    
+
+
+
+### 1.2.
+
+(LT 20) State your null and alternative hypotheses, both symbolically and verbally. Indicate the difference equation you are going to use **prior** to your hypotheses.  
+ 
+> Insert answer here     
+   
+   
+
+### 1.3.
+
+(LT 13) What type of study design (two independent samples or matched pairs) is appropriate for this analysis? Justify your response.
+
+> Insert answer here   
+
+
+
+### 1.4.
+
+(LT 10/16) Assess the conditions needed to conduct statistical inference (normality and sufficient sample size). Include any code needed to assess this problem. 
+
+< Insert code chunk here >  
+
+> Insert answer here  
+
+
+
+### 1.5.
+
+(LT R10) Calculate the appropriate test statistic and p-value 'by hand' (i.e., using the numerical summary functions in R, without using the `t.test()` function); show your work. Provide the test statistic and p-value below.  
+
+< Insert code chunk here >  
+
+> t~statistic~ =   
+> p-value =   
+
+
+
+### 1.6.
+
+(LT 18) Interpret your p-value in the context of the scenario.  
+
+> Insert answer here  
+
+
+
+### 1.7.
+
+(LT 18) Write a strength of evidence statement for the p-value, using a significance level of 0.01.  
+
+> Insert answer here  
+
+
+
+### 1.8.
+
+(LT 7, R10) Calculate and interpret the 99% confidence interval (CI) for the mean difference of weight in Katmai bears over summer ‘by hand’ (i.e., using numerical summary functions in R, as well as one line of code to determine the critical value (denoted by t\*), instead of using the `t.test()` function).
+
+< Insert code chunk here >   
+
+> Insert answer here  
+
+
+
+### 1.9.
+
+(LT 8) Based on your confidence interval, is there evidence that Katmai brown bears gained more than 30% of their autumn-body weight over the summer, or roughly 345 lbs? Explain and justify your answer in the context of the study.
+
+> Insert answer here  
+
+
+
+### 1.10.
+
+(LT 15) If the researchers had detected a difference, could the researchers determine that the month *caused* any difference in bear weight? Justify your answer.
+
+> Insert answer here  
+
+
+
+### 1.11.
+
+(LT 21) Given your evidence, what are the two possible decisions you could be making (correct, type I, type II)? After identifying them, interpret the error in the context of the problem (i.e., describe the definition of your chosen error, but with the context of the problem in place of words like "null hypothesis").
+
+> Identify:  
+> Describe:  
+
+
+
+
+
+## Section 2: Asthma & Winter Exercise 
+
+Asthma sufferers face asthma triggers from many different fronts. Even the weather itself may pose dangers to some asthma sufferers. The cold air that winter brings has been proposed to trigger asthma attacks in asthmatic athletes. An exercise physiologist is interested in comparing peak expiratory flow rate (PEFR, L/min; a measurement of the speed of air exhaled forcefully from the lungs) in asthmatic athletes before and after they jog on a cold winter's day. *A higher PEFR indicates faster air flow from the lungs; a lower PEFR could start to indicate narrowing airways, a precursor to asthma attacks.* The exercise physiologist contacted coaches (of cardio-based sports) from their university system to recruit asthmatic athletes. Each athlete had their PEFR measured before and after a cold air jog; athletes were measured on similarly cold days and for similar jogging routes. The researchers wish to know if there is a reduction in PEFR in asthmatic athletes after they exercise in cold weather. The data are in `asthma.PEFR.csv`. Define the difference as `perf.post` - `perf.pre`. Use $\alpha - 0.05$ for the hypothesis test. 
+
+
+
+### 2.1.
+
+(LT 20) State the null and alternative hypotheses, both symbolically and verbally.
+
+> Insert answer here   
+ 
+ 
+
+### 2.2.
+
+(LT 12) What type of study design (two independent samples or matched pairs) is appropriate for this analysis? Justify your response.
+
+> Insert answer here   
+
+
+
+### 2.3.
+
+(LT 13) What type of study was performed (observational, experimental)? Justify your response. 
+
+> Insert answer here   
+
+
+
+### 2.4.
+
+(LT 10/16) State and assess the conditions to use the Student's t distribution to conduct the hypothesis test (normality and sufficient sample size) in the context of the problem. Use the skills you learned in Lab 5 & 6 as needed to complete this question. You may need to run code to get some of the answers, but you must show the code and justification within this document.   
+
+< Insert code chunk here >  
+
+> Insert answer here   
+
+
+
+
+### 2.5.
+
+(LT R5) Perform an appropriate hypothesis test using the `t.test()` function, then provide your test statistic, degrees of freedom, and p-value. 
+
+< Insert code chunk here > 
+
+> Insert answer here  
+
+
+
+### 2.6.
+
+(LT 18) Interpret your p-value in the context of the scenario.
+
+> Insert answer here  
+
+
+
+### 2.7.
+
+(LT 18) Provide a strength of evidence statement from your p-value, using a 0.05 significance level.  
+
+> Insert answer here   
+
+
+
+### 2.8.
+
+(LT R4) Using the `t.test()` function, calculate the 95% confidence interval for the difference in peak expiratory flow rate in cold weather of asthmatic athletes after and before exercise. 
+
+< Insert code chunk >  
+
+
+
+### 2.9.
+
+(LT 4) Provide a piece of evidence from EDA (Exploratory Data Analysis) that supports the results of your inference to answer the research question if cold weather triggers narrowing of the lung's airways in asthmatic athletes (i.e., the after cold weather exercise has a lower peak expiratory flow rate than before exercise).  
+
+< Insert code chunk as needed here >
+
+> Insert answer here  
+
+
+
+### 2.10.
+
+(LT 5) Could you generalize your conclusion to the population of interest?  If yes, explain why. If not, explain why and, if applicable, identify the population to which you can generalize.    
+
+> Insert answer here   
+
+
+
+### 2.11.
+
+(LT 11) Can you trust the statistical methods used to calculate your inference results (p-value, confidence interval?) Justify your answer, including what the study has and why or why not that allows you to trust the results.  
+
+> Insert answer here   
+
+
+
+### 2.12.
+
+(LT 22, R10) First calculate the effect size for our hypothesis test (the Cohen's d). Then, state the value of this effect size and use the guidelines from your notebook to classify it as small, medium, or large.
+
+< Insert code chunk here >  
+
+> Insert answer here
+
+
+
+### 2.13.
+
+(LT 22) If a similar study (n=20) had obtained a p-value of 0.037 and a Cohen's d (effect size) of 0.9, which study would provide more evidence of a **meaningful** difference between the peak expiratory flow rate in cold weather of asthmatic athletes after and before exercising?
+
+> Insert answer here
+
+
+
+
+
+
