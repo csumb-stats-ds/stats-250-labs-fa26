@@ -164,7 +164,7 @@ You are a researcher interested in the weight gain of brown bears over the summe
 
 ## Section 2: Asthma & Winter Exercise 
 
-Asthma sufferers face asthma triggers from many different fronts. Even the weather itself may pose dangers to some asthma sufferers. The cold air that winter brings has been proposed to trigger asthma attacks in asthmatic athletes. An exercise physiologist is interested in comparing peak expiratory flow rate (PEFR, L/min; a measurement of the speed of air exhaled forcefully from the lungs) in asthmatic athletes before and after they jog on a cold winter's day. *A higher PEFR indicates faster air flow from the lungs; a lower PEFR could start to indicate narrowing airways, a precursor to asthma attacks.* The exercise physiologist contacted coaches (of cardio-based sports) from their university system to recruit asthmatic athletes. Each athlete had their PEFR measured before and after a cold air jog; athletes were measured on similarly cold days and for similar jogging routes. The researchers wish to know if there is a reduction in PEFR in asthmatic athletes after they exercise in cold weather. The data are in `asthma.PEFR.csv`. Define the difference as `perf.post` - `perf.pre`. Use $\alpha - 0.05$ for the hypothesis test. 
+Asthma sufferers face asthma triggers from many different fronts. Even the weather itself may pose dangers to some asthma sufferers. The cold air that winter brings has been proposed to trigger asthma attacks in asthmatic athletes. An exercise physiologist is interested in comparing peak expiratory flow rate (PEFR, L/min; a measurement of the speed of air exhaled forcefully from the lungs) in asthmatic athletes before and after they jog on a cold winter's day. *A higher PEFR indicates faster air flow from the lungs; a lower PEFR could start to indicate narrowing airways, a precursor to asthma attacks.* The exercise physiologist contacted coaches (of cardio-based sports) from their university system to recruit asthmatic athletes. Each athlete had their PEFR measured before and after a cold air jog; athletes were measured on similarly cold days and for similar jogging routes. The researchers wish to know if there is a reduction in PEFR in asthmatic athletes after they exercise in cold weather. The data are in `asthma.PEFR.csv`. Define the difference as `pefr.post` - `pefr.pre`. Use $\alpha - 0.05$ for the hypothesis test. 
 
 
 
@@ -249,7 +249,7 @@ Asthma sufferers face asthma triggers from many different fronts. Even the weath
 
 ### 2.10.
 
-(LT 5) Could you generalize your conclusion to the population of interest?  If yes, explain why. If not, explain why and, if applicable, identify the population to which you can generalize.    
+(LT 5) Identify the population, if any, to which the study can be generalized. Explain why with evidence in the context of the problem. 
 
 > Insert answer here   
 
