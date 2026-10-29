@@ -1,0 +1,377 @@
+---
+title: 'Lab 8: Analysis of Variance'
+author: "NAME"
+format: html
+embed-resources: true
+html-math-method: mathml
+execute: 
+  warning: false
+  echo: true
+  error: false
+---
+
+
+## Before you start:
+
+1. Complete the Lab Primer linked in Canvas.  
+2. Be sure you have opened the `lab8-anova-student.Rproj` file.  
+3. Change the name of the **QMD** file only to your last name, first initial, e.g., `OtterM-lab8-anova-student.qmd`. You will have to close the QMD document to rename the file.   
+4. Change the "NAME" above after `author:` to your name, leaving it in quotes: "Monte Otter"  
+
+
+## Skills
+
+*	Explain the purpose of a multiple comparison procedure to compare multiple means.
+* Be able to identify a situation that requires ANOVA.  
+    + Identify the factor (i.e. explanatory variable) and response variable.  
+    + Be able to state the appropriate hypotheses for ANOVA.  
+    + Report ANOVA results in an ANOVA table and be able to interpret each part of the table within the context of the study.  
+* Explain the necessary conditions to use an ANOVA  
+    + Be able to assess the conditions.  
+* Be able to identify a situation that requires an ANOVA for transformed data
+    + Identify the factor (i.e. explanatory variable) and response variable
+    + Be able to state the appropriate verbal-only hypotheses for a transformed ANOVA
+    + Report ANOVA results in an ANOVA table and be able to interpret each part of the table within the context of the study.
+* Be able to interpret output from a post hoc test (Tukey's method).
+* Be able to explain the difference between multiple t-tests and a post hoc test.
+* Be able to execute the proper R codes to conduct ANOVA and post hoc analyses.
+
+The above skills cover LT 1-5, 10-11, 13, 15-16, 18, 21, 23-24.  It also introduces R-LT R7 and reviews R-LTs R1-R2.   
+
+Here are some symbols that you might find useful:  
+$H_0$ $H_1$ $\sigma$ $\mu$ $\mu_0$ $\mu_{word}$ $\mu_{d~word}$ $\neq$
+
+
+Update the following code chunk with the appropriate packages.  
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+
+```
+
+
+
+***
+
+## Scenario 1: Cuckoo Egg Length        
+
+Common cuckoos (*Cuculus canorus*) are brood parasites, meaning that they lay their eggs in the nests of host species, where they are adopted and hatched by the host birds. Once the cuckoo chick hatches, it pushes the host's eggs or young out of the nest, monopolizing the feeding of the typically small host parents to the typically larger cuckoo chick. Prior to the chick hatching, however, the cuckoo egg needs to be accepted by the host species as one of their own, despite large differences in size between the roughly pigeon sized adult cuckoo and the wide variety of sizes of the host (smaller than sparrows to larger than robins). The variety in size of the host species are mirrored in a variety of sizes in the eggs of those species. 
+
+Cuckoo eggs vary in size and coloration. Researchers are interested in determining why that might be. They think that egg size might depend on either the size of the mother laying the egg, or possibly on the host species (to help the cuckoo egg be adopted). Data were collected by observing a random sample of known cuckoo territories. Researchers monitored each selected cuckoo pair for indications the female was ready to lay an egg. They then followed the female during all daylight hours when she was active to record any laying event. Researchers collect data on the maternal size, host nest species, and the length of the egg, in mm. Maternal size was classified into three sizes, since the observed laying mother was not disturbed to collect and measure her length; instead size was classified from photographs as small, medium and large. Researchers collected data from eggs laid in the host nest of five species: tree pipits, hedge sparrows, robins, wagtails, and wrens. The data are found in `cuckoo_egg-length.csv`.
+
+**Researchers want to examine if there is a difference in the cuckoo egg size depending on the species of the host nest.**
+
+
+<Insert code chunk here and read in the data> 
+
+
+
+### 1.1.  
+
+(LT 21) Since the researchers plan to make comparisons among the five host species, they chose first to conduct an ANOVA test on the cuckoo egg length based on species before making comparisons between each species of host. Why is it better to conduct an ANOVA first before making comparisons between each pair of host species?
+
+> Insert answer here   
+
+
+
+### 1.2.  
+
+(LT 2, 13) Name the response and explanatory variables of interest and, for each, state the type of variable (quantitative or qualitative; continuous, discrete, nominal, or ordinal). Recall this research question is examining the relationship between host species and the cuckoo egg length.  
+
+> Response: Insert answer here     
+
+> Explanatory: Insert answer here   
+
+
+
+### 1.3.  
+
+(LT 23) State the null and alternative hypotheses, symbolically and verbally as appropriate.
+
+> Insert answer here   
+
+
+
+### 1.4.  
+
+(LT 10, 16, 24, R7, R2) Modify the code below to conduct an appropriate testing of the conditions to calculate an ANOVA analysis. State each condition, state the evidence you used to assess the condition (e.g. graphic), and then assess the evidence for if the condition is met or not. Use the template below the code chunk for your answer to each condition.  
+
+```{r}
+#| label: condition-checks
+
+species_aov <- [insert code that does an anova here]
+
+<insert code that creates a qq plot of residuals here>
+
+<insert code that creates a residuals plot here>
+```
+
+> Condition #_: ___     
+> Evidence: ___    
+> Justification: ___    
+
+> insert more condition templates as needed  
+
+
+
+### 1.5.  
+
+(LT R7) Insert a code chunk and write the code below to print out an anova table for your analysis. Fill in the values of the appropriate statistics.
+
+<Insert code chunk here>   
+
+> df~e~:    
+> df~t~:    
+> MSE:    
+> MST:     
+> F:    
+> p-value:   
+
+
+
+### 1.6.  
+
+(LT 18) Interpret your p-value in the context of the scenario.
+
+> Insert answer here   
+
+
+
+### 1.7.  
+
+(LT 18) Write a strength of evidence statement for your p-value, using the significance level $\alpha = 0.025$.  
+
+> Insert answer here   
+
+
+
+### 1.8.  
+
+(LT 4) Based on your exploratory data analysis (EDA), what would be your conclusion in answer to the research question about if there are differences in cuckoo egg length among the five different host species' nests? You will need to insert a code chunk to calculate the appropriate statistics and create a graphic to answer this question. Be sure to cite your evidence and justify how it supports the conclusions about the parameters.   
+
+```{r}
+#| label: exploratory-data-analysis
+<insert summary statistics code here>
+<insert boxplot code here>
+```
+
+> Insert answer here   
+
+
+
+### 1.9.  
+
+Is there any reason to do a Tukey test on the egg lengths between host nest species? **Bold** the words (but not the list-letter) of your answer.   
+
+a. No, we risk elevated Type I error with multiple comparisons in a Tukey test.  
+b. No, there is no reason to need a comparison.  
+c. Yes, we should do a Tukey test to test our original null hypothesis.   
+d. Yes, we should do a Tukey test to identify which pairs are significantly different.  
+
+
+
+### 1.10.  
+
+(LT 21) What is the consequence of using an independent two-sample t-test for each pairwise comparison (instead of using the Tukey test)? **Bold** the words (but not the list-letter) of your answer.  
+
+a. We risk an increased Type I error rate in each test.  
+b. We risk an increased chance of committing a Type I error.  
+c. We risk an increased chance of committing a Type II error.  
+d. We risk eliminating random coincidences as a reasonable explanation.  
+
+
+
+### 1.11.  
+
+(LT R7) Conduct a Tukey test by modifying the code below. (1) Fill out the table below to organize the results and (2) then provide a written summary of your *post hoc* test results of all possible factor pairings. In your written summary, you should address all pairwise comparisons in terms of if they are the same, if they are different (i.e., at least moderately strong evidence against the null, using the family-wise significance of 0.05, and include p-values as evidence), and, if it exists, the direction of difference. *This is not a list. Simply state generally how parameters compare, the way you might communicate verbally with a scientist, with evidence.*
+
+```{r}
+#| label: tukey-comparisons
+______(species_aov)
+```
+
+
+  pair   | p-value | strong evidence? (Y/N) | how do they compare? (use <,>,or =)
+---------|---------|------------------------|---------------------------------------
+  R-H    |         |                        |    
+  T-H    |         |                        |    
+  Wa-H   |         |                        |  
+  Wr-H   |         |                        |  
+  T-R    |         |                        |  
+  Wa-R   |         |                        |  
+  Wr-R   |         |                        |  
+  Wa-T   |         |                        |  
+  Wr-T   |         |                        |  
+  Wr-Wa  |         |                        |  
+
+
+> Insert answer here  
+
+
+ 
+### 1.12. 
+
+There is an idea that cuckoo's try to mimic host eggs in size and coloration when they lay their eggs to increase the chance their egg is adopted by the host birds. The host bird species' own eggs have lengths of around 14-30mm. Wrens have egg lengths at the lower end of that range. Based on the results of the study above, is there an argument that cuckoos might be using mimicry in terms of length?
+
+> Insert answer here   
+
+
+
+### 1.13.  
+
+(LT 11) Do you trust the results of your ANOVA and Tukey tests? Explain why with statistical reasoning. If you do not trust the results, suggest and justify an alternate analysis. 
+
+> Insert answer here   
+
+
+
+### 1.14. 
+
+(LT 5, 15) Given our scenario, **bold** any answers (but not the list-letter) below that is a true statement.  
+
+a. The cuckoo eggs were sampled randomly, so this can only be an observational study and thus we cannot determine causality.
+b. The cuckoo eggs were sampled randomly, so this can only be an observational study and thus we can generalize to all the tree branches.
+c. The cuckoo eggs were not randomly assigned to each treatment group (host species), so this is an observational study and thus we can generalize to all common cuckoo eggs.
+d. The cuckoo eggs were not randomly assigned to each treatment group (host species), so this is an observational study and thus we cannot determine causality. 
+
+
+
+
+***
+
+
+
+### Scenario 2: Impulse Rates of Molluscs      
+
+
+Scientists at Hopkins Marine Station in Monterey, CA questioned why an aquatic snail moves slower than a slug and much slower than a squid, even though these three are molluscs (Molluscs are organisms that belong to the same phylum). They wonder if this is due to sodium channels, proteins that start electrical nerve impulses. Do slower molluscs have slower-acting sodium channels than faster molluscs (and thus slower electrical nerve impulses for movement)? The scientists collected a total of 118 specimens from random locations near Monterey Bay. Each specimen is either a *Pleurobranchaea californica* (sea slug), *Limax maximus* (leopard snail), or a *Loligo pealii* (Longfin inshore Squid). They took the nervous systems of the specimens and grew their nerve cells in culture for electrical studies. They then used a patch clamp to detect the reaction of sodium channels to small changes in voltage. They recorded the species and the impulse rate (cm/s) of each specimen in the data set `mollusc.csv`.
+
+**Researchers want to determine if the nervous impulse rate of molluscs differs between species (that move at different speeds).** 
+
+
+### 2.1. 
+
+(LT 23) State the null and alternative hypotheses, symbolically and verbally as appropriate.
+
+> Insert answer here   
+
+
+
+### 2.2. 
+
+(LT 10, 16, 24, R2, R7) State each condition, state the evidence you used to assess the condition, and then assess the evidence for if the condition is met or not. Be sure to fix your explanatory variable for an ANOVA analysis.     
+
+
+<Insert code chunk here>   
+
+> Insert answer here   
+
+
+
+*** 
+If the parametric conditions of ANOVA are not met, we can consider using a transformation before using a non-parametric option. In your class notes, we gave you some general guidelines for choosing possible transformations to try on your data. We will perform a logarithmic transformation on the data from each location using the `log` function. 
+
+
+### 2.3. 
+
+*Challenge Question* What do you notice about the distribution of nerve impulse rates (cm/s) in mollusks that might suggest a logarithmic transformation would be appropriate? *(Hint: a boxplot, calculating summary statistics, or looking back at your condition plots might help you determine this)*
+
+<Insert code chunk here>  
+
+> Insert answer here   
+
+ 
+
+### 2.4. 
+
+(LT 2, 13) Name the explanatory and the response variables of interest for the **logarithmic-transformed** ANOVA and state the type of variable (quantitative or qualitative; continuous, discrete, nominal, or ordinal). 
+
+> Response: Insert answer here    
+> Explanatory: Insert answer here     
+
+
+
+### 2.5.   
+
+(LT 23) State the null and alternative hypotheses for the **logarithmic-transformed** ANOVA, verbally only.
+
+> Insert answer here   
+
+
+
+### 2.6.   
+
+(LT 10, 16, 24, R2, R7) Assess all the conditions of the **logarithmic-transformed** ANOVA. State each condition to conduct the inference test, state the evidence you used to assess the condition, and then assess the evidence for if the condition is met or not.    
+
+
+```{r}
+#| label: log-aov
+
+log_mollusc_aov <- <insert function>(log(<insert reponse>) ~ factor(<insert explanatory>), data = <insert dataname>)
+
+
+```
+
+
+> Insert answer here   
+
+
+
+### 2.7. 
+
+(LT R7) Insert a code chunk that will print out your ANOVA table from the *logarithmic-transformed* analysis. Fill in the appropriate statistics below. 
+
+<Insert code chunk here>   
+
+
+> df~e~:     
+> df~t~:     
+> MSE:     
+> MST:      
+> F:     
+> p-value:     
+
+
+
+### 2.8.
+
+(LT 18) Write a statement of the strength of your evidence of your p-value from the **logarithmic-transformed** ANOVA.   
+
+> Insert answer here   
+
+
+
+### 2.9. 
+
+If the ANOVA on transformed data yields significant differences between the three species, we will want to conduct a *post-hoc* analysis. Have we met the conditions to perform a post-hoc Tukey test? (yes or no & why; do not re-assess).
+
+> Insert answer here   
+
+
+
+### 2.10. 
+
+Insert a code chunk to conduct a Tukey test. Provide a written summary of your *post hoc* test results of all possible depth pairings. 
+
+< Insert code chunk here>    
+
+> Insert answer here   
+
+
+
+### 2.11.   
+
+(LT 5, 15) Given our scenario, **bold** any answers (but not the list-letter) below that is a true statement.
+
+a. The observations were not randomly assigned to each treatment group, so this is an observational study.   
+b. The observations were sampled randomly, so this can only be an observational study and thus we cannot determine causality.  
+c. The observations were not sampled randomly, so we cannot generalize to all molluscs of these three species. 
+d. The observations were sampled randomly, so we can generalize our results to all molluscs of these three species. 
+e. The observations were sampled randomly, so we can generalize our results to all molluscs of these three species within the Monterey Bay. 
+f. The observations were randomly assigned to each treatment group, so this is an experiment, so we can say any changes we observed is due to the mollusc species.   
+g. The observations were randomly assigned to each treatment group, so this is an experiment, but we cannot determine the cause of the difference.  
+
+
+
