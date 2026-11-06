@@ -1,0 +1,225 @@
+---
+title: "Lab 9: Correlation and Introduction to Simple Linear Regression"
+author: "NAME"
+format: html
+embed-resources: true
+html-math-method: mathml
+  warning: false
+  echo: true
+  error: false
+---
+
+
+## Before you start:
+
+1. Complete the Lab Primer linked in Canvas.  
+2. Be sure you have opened the `lab9-intro-two-quant-student.Rproj` file.  
+3. Change the name of the **QMD** file only to your last name, first initial, e.g., `OtterM-lab9-intro-two-quant-student.qmd`. You will have to close the QMD document to rename the file. 
+4. Change the "NAME" above after `author:` to your name, leaving it in quotes: "Monte Otter" 
+
+
+## Skills
+* Given a study, distinguish between explanatory and response variables
+* Given a set of raw data, make a scatterplot or regression output using R
+* Given a set of raw data, be able to calculate correlation
+* Be able to use correlation to identify the strength and direction of a linear association
+* Given a scatterplot, identify patterns such as positive and negative associations
+* Given standard regression output, identify and utilize key parts of the output (estimated slope, intercept)
+
+These skills incorporate LTs 25 and R LTs R8, R9, and R10. You additionally review LTs 5, 13, and 15.
+
+
+*Tip: putting two spaces after a line forces the next line in your Quarto document to also be a new line in your knitted document.*
+
+*Tip: equations in will ignore any attempt to include spaces, unless you insert a `~` inside the equation where you want the space.* For example, in our BAC-Beers problem from class (hover your mouse over each formula to see what it would knit like): $x_{number of beers}$ versus $x_{number~of~beers}$
+
+*Tip: If you want to test out two lines of code, such as for a plot (such as you've seen previously with piped functions), you have to run them **together**, not one at a time.*
+
+Here are some symbols that you might find useful: 
+
+$\hat{y}$
+
+$\hat{y}_{word}$  
+
+$x_{word}$  
+
+$\beta_{word}$  
+
+
+**Reminder:** Before you start the lab, add the code that will load any other packages you might need into this code chunk.
+
+```{r}
+#| label: setup
+#| include: false
+library(tidyverse)
+
+
+```
+
+## Scenario 1: Fish Fecundity 
+
+Over 60 species of rockfish (*Sebastes spp.*) reside off the coast of California, many of which are economically important to both recreational and commercial fisheries. Understanding the reproductive potential of an exploited stock is critical to assessing the health and status of a fishery. Yellowtail and Blackgill rockfish were randomly collected from specific sites along the coast of California, at times that corresponded with the period of annual rockfish egg development and larval release. Samples of eggs or larvae from the ovary were collected and used to estimate relative fecundity ($\Phi_{rel}$), the number of viable eggs or larvae per maternal somatic weight (larvae/g). Researchers also collected a standard measurement of length on fish, known as the fish fork length (mm), which is the length from the tip of the head to the fork in the tail, to see if increased size was associated with increased measures of fecundity in female rockfish. Data are found in the file `fecundity-bgyt.csv`. *Data based on Beyer et al. 2015 Envir. Biol. Fishes*
+
+
+### 1.1.
+
+(LT 13) Name the response and explanatory variables of interest and, for each, state the type of variable (quantitative or qualitative).
+
+> Response:
+
+> Explanatory:
+
+
+
+### 1.2.
+
+(LT 13) What type of study is this (observational or experimental)? Justify your answer in the context of the study.
+
+> Insert answer here  
+
+
+
+### 1.3.
+
+(LT R2 & R8) Exploratory Data Analysis: Insert a code chunk below to create an appropriate graphic and calculate any appropriate summary statistics. Modify the plot so that the y axis spans from 100 to 600 larvae/g.  
+
+< Insert code chunk here >  
+
+
+
+### 1.4.
+
+What is the simplest form (linear, nonlinear, etc) of the relationship between the relative fecundity and fork length of female rockfish?
+
+> Insert answer here  
+
+
+
+### 1.5.
+
+What is the strength and direction of the linear relationship? Cite your evidence. (You may want to refer to 1.3 / use your best evidence)
+
+> Insert answer here  
+
+
+
+### 1.6.
+
+(LT R2) Create a scatterplot of the data, including both the axis modification and the estimated linear model on the plot.
+
+< Insert code chunk here >  
+
+
+
+### 1.7.
+
+(LT R8) Create your linear model. Then, write the code below to print out the coefficients for your estimates of slope and intercept of your linear model between between the relative fecundity and fork length and write them below.
+
+< Insert code chunk here >  
+
+> $b_0$ = 
+
+> $b_1$ = 
+
+
+
+### 1.8.
+
+(LT R9) Write the equation for your estimate of the linear model between relative fecundity and fork length. Use the appropriate formatting for symbols.
+
+> Insert answer here  
+
+
+
+### 1.9.
+
+(LT 25) Interpret the slope of the linear model, in context.
+
+> Insert answer here  
+
+
+
+### 1.10.
+
+(LT 25) First interpret the intercept of the linear model, in context (provide the mathematical interpretation, whether it makes sense or not practically). Then, explain whether this interpretation is practical.
+
+> Insert answer here  
+
+
+
+### 1.11.
+
+(LT R10) What is the average relative fecundity for a female rockfish with a fork length of 475 mm? Show your work in a code chunk and write the answer below.
+
+< Insert code chunk here >  
+
+> Insert answer here  
+
+
+
+### 1.12.
+
+(LT R10) One of the individuals in the data set has a fork length of 404.9228 mm and a relative fecundity of 278.4227 larvae*g^-1^. Calculate the residual for the data point; show your work. What does that value mean for the relative fecundity, in context?  
+
+< Insert code chunk here >  
+
+> Insert answer here  
+
+
+
+### 1.13.
+
+(LT 25) Does the linear model with fork length explain much of the variability in relative fecundity of female rockfish? How much variability does it explain (interpretation)? Does that seem like a good model to use for predictions (evaluate the strength of the model fit)?   
+
+< Insert code chunk here >  
+
+> Insert answer here 
+
+
+
+## Scenario 2: Patch Reef Species-Area Relationships    
+
+Small patch reefs can harbor many reef fishes because most fishes have a drifting larval phase to randomly disperse over patchy habitats. The presence of patchy habitats allows larvae to disperse over and connect up meta-populations and meta-communities. Thus, small patch reefs may play an important role in sustaining overall meta-populations and -communities. The species-area relationship (SAR) is one of the most important tools for conservation biology and landscape ecology to understand large-scale dynamics such as these. We want to examine the relationship of damselfish (*Pomacentridae*) assemblages to the area of a reef. They randomly selected 84 small patch reefs (0.05 - 45.4 m^2^). For each patch reef, you calculate the surface area of the reef, and conduct a survey to determine the species richness (number of different damselfish species) found on the reef. The data are found in `species-area.csv`. **Data based on Hattori & Shibuno 2010 Ecol Res**
+
+
+### 2.1.
+
+(LT 13) Name the response and explanatory variables of interest and, for each, state the type of variable (quantitative or qualitative).
+
+> Response:
+
+> Explanatory:
+
+
+### 2.2.
+
+(LT 5) TRUE or FALSE? We could generalize the results of this study to all tropical subsistence farms. Bold your answer.
+
+(LT 15) TRUE or FALSE? We could determine causality from the results of this study. Bold your answer.
+
+
+
+### 2.3.
+
+(LT R2 & R8) Explanatory Data Analysis: Insert a code chunk below to create an appropriate graphic and calculate any appropriate summary statistics.
+
+< Insert code chunk here >  
+
+
+
+### 2.4.
+
+What is the simplest form (linear, nonlinear, etc) of the relationship between agricultural intensity and population density?
+
+> Insert answer here  
+
+
+
+### 2.5.
+
+Is it appropriate to interpret the calculated correlation coefficient or create a linear model for these data?
+
+> Insert answer here  
+
+
+
