@@ -4,6 +4,7 @@ author: "NAME"
 format: html
 embed-resources: true
 html-math-method: mathml
+execute:
   warning: false
   echo: true
   error: false
