@@ -210,7 +210,7 @@ Small patch reefs can harbor many reef fishes because most fishes have a driftin
 
 ### 2.4.
 
-What is the simplest form (linear, nonlinear, etc) of the relationship between damselfish species richness and reef size?
+What is the simplest form (linear, nonlinear, etc) of the relationship between damselfish species richness and patch reef area?
 
 > Insert answer here  
 
