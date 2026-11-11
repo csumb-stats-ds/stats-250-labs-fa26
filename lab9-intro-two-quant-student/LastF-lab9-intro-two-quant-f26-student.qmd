@@ -194,7 +194,7 @@ Small patch reefs can harbor many reef fishes because most fishes have a driftin
 
 ### 2.2.
 
-(LT 5) TRUE or FALSE? We could generalize the results of this study to all tropical subsistence farms. Bold your answer.
+(LT 5) TRUE or FALSE? We could generalize the results of this study to all small patch reefs. Bold your answer.
 
 (LT 15) TRUE or FALSE? We could determine causality from the results of this study. Bold your answer.
 
@@ -210,7 +210,7 @@ Small patch reefs can harbor many reef fishes because most fishes have a driftin
 
 ### 2.4.
 
-What is the simplest form (linear, nonlinear, etc) of the relationship between agricultural intensity and population density?
+What is the simplest form (linear, nonlinear, etc) of the relationship between damselfish species richness and reef size?
 
 > Insert answer here  
 
